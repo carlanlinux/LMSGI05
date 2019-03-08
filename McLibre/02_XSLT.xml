@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ies  ="IES Abastos" web="http://www.iesabastos.org/" >
+  <ciclos>
+    <ciclo id="ASIR">
+      <nombre>Administración de Sistemas Informáticos en Red</nombre>
+      <grado>Superior</grado>
+      <decretoTitulo año="2009" />
+    </ciclo>
+    <ciclo id="DAW">
+      <nombre>Desarrollo de Aplicaciones Web</nombre>
+      <grado>Superior</grado>
+      <decretoTitulo año="2010" />
+    </ciclo>
+    <ciclo id="SMR">
+      <nombre>Sistemas Microinformáticos y Redes</nombre>
+      <grado>Medio</grado>
+      <decretoTitulo año="2008" />
+    </ciclo>
+  </ciclos>
+</ies>
+
+
+
+XSLT (1) - Ejercicio 2-1
+Párrafos:
+
+<?xml version="1.0" encoding="UTF-8"?>
+<html>
+  <h1>IES Abastos</h1>
+  <p>Administración de Sistemas Informáticos en Red</p>
+  <p>Desarrollo de Aplicaciones Web</p>
+  <p>Sistemas Microinformáticos y Redes</p>
+</html>
+
+Solución:
+
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:Stylesheet xmlns:xls="www.w3c.org/1999/XSL/Transform" version="1.0">
+
+	<xsl:template match="ies">
+		<html>
+			<xsl:apply-template/>
+		</html>
+	</xsl:template>
+
+	<xsl:template match"ies">
+		<h1><xsl:value-of select = "@nombre"/></h1>
+	</xsl:template>
+	
+	<xsl:template match ="ciclo">
+		<p><xsl:value-of select = "nombre"/></p>
+	</xsl:template>
+
+</xsl:Stylesheet>
+
+
+
+

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ies>
+  <modulos>
+    <modulo id="0228">
+      <nombre>Aplicaciones web</nombre>
+      <curso>2</curso>
+      <horasSemanales>4</horasSemanales>
+      <ciclo>SMR</ciclo>
+    </modulo>
+    <modulo id="0372">
+      <nombre>Gestión de bases de datos</nombre>
+      <curso>1</curso>
+      <horasSemanales>5</horasSemanales>
+      <ciclo>ASIR</ciclo>
+    </modulo>
+    <modulo id="0373">
+      <nombre>Lenguajes de marcas y sistemas de gestión de información</nombre>
+      <curso>1</curso>
+      <horasSemanales>3</horasSemanales>
+      <ciclo>ASIR</ciclo>
+      <ciclo>DAW</ciclo>
+    </modulo>
+    <modulo id="0376">
+      <nombre>Implantación de aplicaciones web</nombre>
+      <curso>2</curso>
+      <horasSemanales>5</horasSemanales>
+      <ciclo>ASIR</ciclo>
+    </modulo>
+  </modulos>
+</ies>
+
+EJERCICIOS
+----------------------
+
+1. Nombre de los módulos que se imparten en el Instituto:
+//nombre/text()
+
+2. Nombre de los módulos del ciclo ASIR:
+Un paso
+//nombre[../ciclo="asir"]/text()
+
+Dos pasos:
+//modulo[ciclo="asir"]/nombre/text()
+//ciclo[.=asir]/../nombre/text()
+
+3. Nombre de los módulos que se imparten en el segundo curso de cualquier ciclo:
+Un paso:
+//nombre[../curso=2]/text()
+
+
+Dos pasos:
+//modulo[curso=2]/nombre/text()
+//curso[.=2]/../nombre/text()
+
+4. Nombre de los módulos de menos de 5 horas semanales:
+Un paso:
+//nombre[../horasSemanales<5]/nombre/text()
+
+Dos pasos:
+//modulo[horasSemanales<5]/nombre/text()
+//horasSemanales[.<5]/../nombre/text()
+
+XPath - Ejercicio 2-5
+de los módulos que se imparten en el primer curso de ASIR:
+
+Un paso:
+//nombre[../curso=1 and ../ciclo="ASIR"]/text()
+
+Dos pasos:
+//modulo[curso=1 and ciclo="ASIR"]/nombre/text()
+//curso[.=1 and /../ciclo="ASIR"]/../nombre/text()
+
+
+
+XPath - Ejercicio 2-6
+Horas semanales de los módulos de más de 3 horas semanales:

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ies>
+  <nombre>IES Abastos</nombre>
+  <web>http://www.iesabastos.org</web>
+  <ciclos>
+    <ciclo id="ASIR">
+      <nombre>Administración de Sistemas Informáticos en Red</nombre>
+      <grado>Superior</grado>
+      <decretoTitulo año="2009" />
+    </ciclo>
+    <ciclo id="DAW">
+      <nombre>Desarrollo de Aplicaciones Web</nombre>
+      <grado>Superior</grado>
+      <decretoTitulo año="2010" />
+    </ciclo>
+    <ciclo id="SMR">
+      <nombre>Sistemas Microinformáticos y Redes</nombre>
+      <grado>Medio</grado>
+      <decretoTitulo año="2008" />
+    </ciclo>
+  </ciclos>
+  <modulos>
+    <modulo id="0228">
+      <nombre>Aplicaciones web</nombre>
+      <curso>2</curso>
+      <horasSemanales>4</horasSemanales>
+      <ciclo>SMR</ciclo>
+    </modulo>
+    <modulo id="0372">
+      <nombre>Gestión de bases de datos</nombre>
+      <curso>1</curso>
+      <horasSemanales>5</horasSemanales>
+      <ciclo>ASIR</ciclo>
+    </modulo>
+    <modulo id="0373">
+      <nombre>Lenguajes de marcas y sistemas de gestión de información</nombre>
+      <curso>1</curso>
+      <horasSemanales>3</horasSemanales>
+      <ciclo>ASIR</ciclo>
+      <ciclo>DAW</ciclo>
+    </modulo>
+    <modulo id="0376">
+      <nombre>Implantación de aplicaciones web</nombre>
+      <curso>2</curso>
+      <horasSemanales>5</horasSemanales>
+      <ciclo>ASIR</ciclo>
+    </modulo>
+  </modulos>
+</ies>
+
+-----------------------------------------
+
+XPath - Ejercicio 3-1 - Solución
+
+Nombre de los módulos del ciclo "Sistemas Microinformáticos y Redes" (en la expresión final no deben aparecer las siglas SMR):
+
+--> Sacamos el id del ciclo
+//ciclo[nombre="Sistemas Microinformáticos y Redes"]/@id
+
+--> Sería la forma normal de hacerlo 
+//modulo[ciclo="SMR"]/nombre/text()
+
+--> Sustituimos la primera en la segunda
+//modulo[ciclo=//ciclo[nombre="Sistemas Microinformáticos y Redes"]/@id]/nombre/text()
+
+
+XPath - Ejercicio 3-2
+
+Nombre de los ciclos que incluyen el módulo "Lenguajes de marcas y sistemas de gestión de información":
+
+--> Sacar siglas
+//modulo[nombre="Lenguajes de marcas y sistemas de gestión de información"]/ciclo/text()
+
+--> nombre de los ciclos ASIR o DAW
+//ciclo[@id="ASIR"]/nombre/text()
+//ciclo[@id="DAW"]/nombre/text()
+
+--> Sustituir la primera en la segunda
+//ciclo[@id=//modulo[nombre="Lenguaje de marcas y sistemas de gestion de información"]/ciclo]/nombre/text()
+
+
+
+XPath - Ejercicio 3-3
+Nombre de los módulos de ciclos de Grado Superior:
+
+--> Sacamos el id de los ciclos de grado medio
+//ciclo[grado="superior"]/@id
+
+-->Nombre de los módulos
+//modulo[ciclo="ASIR"]/nombre/text()
+//modulo[ciclo="DAW"]/nombre/text()
+
+--> Sustituir la primera en la segunda
+//modulo[ciclo=//ciclo[grado="Superior"]/@id]/nombre/text()
+
+
+
+XPath - Ejercicio 3-4
+Nombre de los módulos de ciclos cuyo título se aprobó en 2008:
+
+--> Sacamos el id de los ciclos de grado medio
+//ciclo[decretoTitulo/@año=2008]/@id
+
+-->Nombre de los módulos
+//modulo[ciclo="SMR"]/nombre/texy()
+
+--> Sustituir la primera en la segunda
+//modulo[ciclo=//ciclo[decretoTitulo/@año=2008]/@id]
+
+Solución de mclibre:
+siglas de los ciclos cuyo título se aprobó en 2008:
+//decretoTitulo[@año=2008]/../@id
+módulos del ciclo SMR:
+//modulo[ciclo="SMR"]/nombre/text()
+sustituyendo la primera en la segunda:
+//modulo[ciclo=//decretoTitulo[@año=2008]/../@id]/nombre/text()
+
+
+
+XPath - Ejercicio 3-5
+Grado de los ciclos con módulos de primer curso:
+
+--> Sacamos el id de los módulos
+//modulo[curso=1]/ciclo/
+
+--> Sacamos grado de los ciclos
+//ciclo[@id="DAW"]/grado/text()
+//ciclo[@id="ASIR"]/grado/text()
+
+--> Sustituir la primera en la segunda
+//ciclo[@id=//modulo[curso=1]/ciclo]/grado/text()
+

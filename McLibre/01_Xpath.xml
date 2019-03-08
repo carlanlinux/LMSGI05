@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ies>
+    <nombre>IES Abastos</nombre>
+    <web>http://www.iesabastos.org</web>
+    <ciclos>
+        <ciclo id="ASIR">
+            <nombre>Administración de Sistemas Informáticos en Red</nombre>
+            <grado>Superior</grado>
+            <decretoTitulo año="2009" />
+        </ciclo>
+        <ciclo id="DAW">
+            <nombre>Desarrollo de Aplicaciones Web</nombre>
+            <grado>Superior</grado>
+            <decretoTitulo año="2010" />
+        </ciclo>
+        <ciclo id="SMR">
+            <nombre>Sistemas Microinformáticos y Redes</nombre>
+            <grado>Medio</grado>
+            <decretoTitulo año="2008" />
+        </ciclo>
+    </ciclos>
+</ies>
+
+
+
+ejercicio1
+
+//ies/nombre
+
+2
+//web/text()
+
+3
+//ciclo/nombre/text()
+
+4
+/ies/ciclo/@id --> No lo tengo tan claro
+//@id
+//ciclo/@*
+
+5
+//@año
+
+6
+//ciclo[grado="Medio"]
+//grado[.="Medio"]/..
+
+7
+Un paso:
+//nombre[../grado="Superior" ]
+
+Dos pasos
+//ciclo[grado="Superior"]/nombre
+//grado[.=Superior" ]/../nombre
+
+8.
+Un paso
+//nombre/[../decretoTitulo/@año<2010]/text()
+
+Dos pasos
+//@año[.<2010]/../../nombre/text()
+//decretoTitulo[@año<2010]/../nombre/text()
+
+9
+Un pasos
+//nombre[../decretoTitulo/@año=2008 or ../decretoTitulo@año=2010]
+
+Dos pasos
+(//año[.=2008]//año[.=2010])/../../nombre/text()
+//decretoTitulo[@año=2008 or @año=2010]/../nombre/text(()
+
