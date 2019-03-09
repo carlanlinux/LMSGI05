@@ -6,7 +6,7 @@
         <html>
             <table border="1" align="center" style="border: thin black">
                 <tr bgcolor="#9BCDFD" align="center">
-                    <!--Cambio el ancho de las celdas para combinarlas -->
+                    <!--Cambio el ancho de las celdas para combinarlas  -->
                     <td colspan="2">Datos</td>
                     <td colspan="4">Notas</td>
                 </tr>
